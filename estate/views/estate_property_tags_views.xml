@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Search View -->
+    <!-- <record id="estate_property_search_view" model="ir.ui.view">
+        <field name="name">Real Estate Property Search</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="name" string="Title"/>
+                <field name="postcode"/>
+                <field name="expected_price"/>
+                <field name="bedrooms"/>
+                <field name="living_area"/>
+                <field name="facades"/>
+                <filter string="Available" name="state" domain="['|', ('state', '=', 'new'), ('state', '=', 'offer_received')]"/>
+            </search>
+        </field>
+    </record> -->
+
+    <!-- List View -->
+    <record id="estate_property_tag_list_view" model="ir.ui.view">
+        <field name="name">Real Estate Property Tag List</field>
+        <field name="model">estate.property.tag</field>
+        <field name="arch" type="xml">
+            <list string="Name">
+                <field name="name"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="estate_property_tag_form_view" model="ir.ui.view">
+        <field name="name">Estate Property Tag Form</field>
+        <field name="model">estate.property.tag</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="color" widget="color_picker"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="estate_property_tags_action" model="ir.actions.act_window">
+        <field name="name">Property Tags</field>
+        <field name="res_model">estate.property.tag</field>
+        <field name="view_mode">form</field>
+        <field name="view_ids" eval="[(5, 0, 0), (0, 0, {'view_mode': 'list', 'view_id': ref('estate_property_tag_list_view')}), (0, 0, {'view_mode': 'form', 'view_id': ref('estate_property_tag_form_view')})]"/>
+    </record>
+</odoo>
